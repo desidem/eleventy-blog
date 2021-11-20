@@ -22,10 +22,10 @@ layout: layouts/base.njk
   }
 
   .user-info button {
-    background: var(--dark-gray);
+    background: black;
     border: 0;
     border-radius: 0.5rem;
-    color: var(--white);
+    color: white;
     display: block;
     font-family: var(--font-family);
     font-size: 1.5rem;
@@ -147,7 +147,7 @@ const token = user ? await netlifyIdentity.currentUser().jwt(true) : false;
          .catch((err) => console.error(err));
 
        });
-
+/** this very important for auto sign in after buying sub**/
        netlifyIdentity.refresh(true);
      } else {
        // if no one is logged in, show login/signup options
