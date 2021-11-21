@@ -2,13 +2,26 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const fetch = require('isomorphic-fetch');
 const { faunaFetch } = require('./utils/fauna');
 
+
 exports.handler = async ({ body, headers }, context) => {
   try {
     // make sure this event was sent legitimately.
     const stripeEvent = stripe.webhooks.constructEvent(
       body,
       headers['stripe-signature'],
-      process.env.STRIPE_WEBHOOK_SECRET,
+      process.env.STRIPE_CHANGE_WEBHOOK_SECRET,
+    );
+
+/** 
+ * 
+ * 
+exports.handler = async ({ body, headers }, context) => {
+  try {
+    // make sure this event was sent legitimately.
+    const stripeEvent = stripe.webhooks.constructEvent(
+      body,
+      headers['stripe-signature'],
+      process.env.STRIPE_CHANGE_WEBHOOK_SECRET,
     );
 
     // bail if this is not a subscription update event
@@ -19,20 +32,26 @@ exports.handler = async ({ body, headers }, context) => {
     if (stripeEvent.type !== 'customer.subscription.updated') return;
 
     const subscription = stripeEvent.data.object;
-
+    const { user } = context.clientContext;
     const result = await faunaFetch({
-      query: 
       
-      `
+      query: `
+      mutation ($netlifyID: ID!, $stripeID: ID!) {
+        createUser(data: { netlifyID: $netlifyID, stripeID: $stripeID }) {
+          netlifyID
+          stripeID
+        }
+      }
+    `,
+  /**  query:  `
           query ($stripeID: ID!) {
             getUserByStripeID(stripeID: $stripeID) {
               netlifyID
             }
           }
-        `, 
+        `,  **/
       variables: {
-      /**   netlifyID: user.id,
-        stripeID: customer.id, **/
+        netlifyID: user.sub,
         stripeID: subscription.customer,
       },
     });
