@@ -3,12 +3,15 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const app = express();
 app.use(express.static('public')); **/
 
-/** const priceId = '{{PRICE_ID}}' **/
+
+
+exports.handler = async (event) => {
+const priceId = '{ price_1JtNOFACG3Zsu2XFU4il0Ki3 }'; 
 //const YOUR_DOMAIN = 'http://yeuxandi.com';
 
 /** app.post('/create-checkout-session', async (req, res) => { **/
   /** exports.handler = async (event) => { **/
-  const session = await stripe.checkout.sessions.create({
+const session = await stripe.checkout.sessions.create({
     mode: 'subscription',
    /** customer_email: 'customer@example.com',
     billing_address_collection: 'auto', **/
@@ -20,15 +23,15 @@ app.use(express.static('public')); **/
     line_items: [
       {
         // Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
-        price: '{{price_1JtNOFACG3Zsu2XFU4il0Ki3}}',
+        price: priceId,
         quantity: 1,
       },
     ],
-    mode: 'payment',
+  /**   mode: 'payment', **/
     success_url: `{process.env.URL}/success.html`,
-   /** cancel_url: `https://yeuxandi.com/cancel.html`, **/
+    cancel_url: process.env.URL, 
   });
-
+};
   res.redirect(303, session.url);
 
 /** 
