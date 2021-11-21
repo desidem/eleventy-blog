@@ -34,7 +34,9 @@ exports.handler = async (_event, context) => {
         quantity: 1,
       },
     ],
-    
+    automatic_tax: {
+      enabled: true,
+    },
   /**   mode: 'payment', **/
     success_url: 'https://yeuxandi.com/success',
     cancel_url: 'https://yeuxandi.com/cancel',
