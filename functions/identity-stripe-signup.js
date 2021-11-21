@@ -1,4 +1,5 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const fetch = require('isomorphic-fetch');
 const { faunaFetch } = require('./utils/fauna');
 
 exports.handler = async ({ body, headers }, context) => {
@@ -65,7 +66,7 @@ exports.handler = async ({ body, headers }, context) => {
     `,
     variables: {
       netlifyID: user.id,
-      stripeID: subscription.customer,
+      stripeID:  subscription.customer,
     },
   });
 
