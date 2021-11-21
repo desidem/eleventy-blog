@@ -130,10 +130,48 @@ const token = user ? await netlifyIdentity.currentUser().jwt(true) : false;
        b1.addEventListener('click', () => {
          netlifyIdentity.logout();
        });
+       b2.innerText = 'Purchase Subscription';
+       b2.addEventListener('click', () => {
 
+// TODO handle subscription management
+
+fetch('/.netlify/functions/checkout-session', {
+          method: 'POST',
+      /**    input: {
+            type: 'hidden',
+            name: 'priceId',
+            value: 'price_1JtNOFACG3Zsu2XFU4il0Ki3',
+          },**/
+          headers: {
+          Authorization: `Bearer ${user.token.access_token}`,
+        },
+       })
+         .then((res) => res.json())
+         .then((link) => {
+           window.location.href = link;
+         })
+         .catch((err) => console.error(err));
+
+       });
+/**
+
+<form action="/create-checkout-session" method="POST">
+    
+
+    <input type="hidden" name="priceId" value="price_G0FvDp6vZvdwRZ" />
+    <button type="submit">Checkout</button>
+  </form> **/
+       /**
        b2.innerText = 'Manage Subscription';
        b2.addEventListener('click', () => {
          // TODO handle subscription management
+      <form action="/create-checkout-session" method="POST">
+    
+
+      <input type="hidden" name="priceId" value="price_G0FvDp6vZvdwRZ" />
+      <button type="submit">Checkout</button>
+    </form>
+
        fetch('/.netlify/functions/create-manage-link', {
           method: 'POST',
           headers: {
@@ -147,6 +185,10 @@ const token = user ? await netlifyIdentity.currentUser().jwt(true) : false;
          .catch((err) => console.error(err));
 
        });
+
+**/
+
+
 /** this very important for auto sign in after buying sub**/
        netlifyIdentity.refresh(true);
      } else {
