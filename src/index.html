@@ -137,11 +137,11 @@ const token = user ? await netlifyIdentity.currentUser().jwt(true) : false;
 
 fetch('/.netlify/functions/checkout-session', {
           method: 'POST',
-          input: {
+        /**  input: {
             type: 'hidden',
             name: 'priceId',
             value: 'price_1JtNOFACG3Zsu2XFU4il0Ki3',
-          },
+          }, **/
       /**    input: {
             type: 'hidden',
             name: 'priceId',
