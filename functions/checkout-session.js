@@ -22,8 +22,8 @@ exports.handler = async (_event, context) => {
   const { stripeID } = result.data.getUserByNetlifyID;
 
   **/
-  const priceId = '{ price_1JtNOFACG3Zsu2XFU4il0Ki3 }'; 
-
+  const priceId = 'price_1JtNOFACG3Zsu2XFU4il0Ki3'; 
+  
   const link = await stripe.checkout.sessions.create({
     
     mode: 'subscription',
@@ -35,7 +35,7 @@ exports.handler = async (_event, context) => {
       },
     ],
     
-    mode: 'payment',
+  /**   mode: 'payment', **/
     success_url: 'https://yeuxandi.com/success',
     cancel_url: 'https://yeuxandi.com/cancel',
 
