@@ -38,10 +38,10 @@ exports.handler = async (_event, context) => {
     tax_rates: [
       '{{TAX_RATE_ID}}',
     ],**/
-    /** 
+    
     automatic_tax: {
       enabled: true,
-    }, **/
+    }, 
   /**   mode: 'payment', **/
 
     success_url: 'https://yeuxandi.com/success',
