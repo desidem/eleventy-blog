@@ -132,7 +132,7 @@ const token = user ? await netlifyIdentity.currentUser().jwt(true) : false;
        });
        b2.innerText = 'Purchase Subscription';
        b2.addEventListener('click', () => {
-        fetch('/.netlify/functions/checkout-session', {
+        import('/.netlify/functions/checkout-session', {
           method: 'POST',
           headers: {
           Authorization: `Bearer ${user.token.access_token}`,
