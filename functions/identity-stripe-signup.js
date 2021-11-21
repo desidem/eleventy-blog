@@ -3,6 +3,46 @@ const { faunaFetch } = require('./utils/fauna');
 
 exports.handler = async (event) => {
   const { user } = JSON.parse(event.body);
+
+  const stripeEvent = stripe.webhooks.constructEvent(
+    body,
+    headers['stripe-signature'],
+    process.env.STRIPE_WEBHOOK_SECRET,
+  );
+
+  // bail if this is not a subscription update event
+  /**  if (stripeEvent.type !== 'customer.subscription.updated') return; **/
+//** MODIFIED TO INCLUDE CANCEL EVENT */
+ /**  if (stripeEvent.type !== 'customer.subscription.updated'|| stripeEvent.type !== 'customer.subscription.deleted') return; **/
+
+ if (stripeEvent.type !== 'customer.subscription.created') return;
+
+ /** const subscription = stripeEvent.data.object; **/
+
+
+/** 
+ 
+exports.handler = async ({ body, headers }, context) => {
+  try {
+    // make sure this event was sent legitimately.
+    const stripeEvent = stripe.webhooks.constructEvent(
+      body,
+      headers['stripe-signature'],
+      process.env.STRIPE_WEBHOOK_SECRET,
+    );
+
+    // bail if this is not a subscription update event
+    /**  if (stripeEvent.type !== 'customer.subscription.updated') return; **/
+ //** MODIFIED TO INCLUDE CANCEL EVENT */
+   /**  if (stripeEvent.type !== 'customer.subscription.updated'|| stripeEvent.type !== 'customer.subscription.deleted') return; **/
+/** 
+   if (stripeEvent.type !== 'customer.subscription.updated') return;
+
+   const subscription = stripeEvent.data.object;
+**/
+
+
+
 /** 
   // create a new customer in Stripe
   const customer = await stripe.customers.create({ id: user.id });
@@ -33,7 +73,7 @@ exports.handler = async (event) => {
     statusCode: 200,
     body: JSON.stringify({
       app_metadata: {
-        roles: ['free'],
+        roles: ['temp'],
       },
     }),
   };
