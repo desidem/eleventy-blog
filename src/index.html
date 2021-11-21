@@ -204,7 +204,9 @@ fetch('/.netlify/functions/checkout-session', {
           <h5>$20.00 / month</h5>
         </div>
       </div>
-<form action="/create-checkout-session" method="POST">
+
+      
+<form action="/.netlify/functions/create-checkout-session" method="POST">
       
         <input type="hidden" name="lookup_key" value="price_G0FvDp6vZvdwRZ" />
         <button id="checkout-and-portal-button" type="submit">Checkout</button>
@@ -303,7 +305,16 @@ fetch('/.netlify/functions/checkout-session', {
 
   </script>
 
-
+<html>
+  <head>
+    <title>Buy cool new product</title>
+  </head>
+  <body>
+    <form action="/create-checkout-session" method="POST">
+      <button type="submit">Checkout</button>
+    </form>
+  </body>
+</html>
 <section>
   <div class="product">
 
