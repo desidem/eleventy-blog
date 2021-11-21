@@ -25,6 +25,22 @@ exports.handler = async (_event, context) => {
   const priceId = '{ price_1JtNOFACG3Zsu2XFU4il0Ki3 }'; 
 
   const link = await stripe.checkout.sessions.create({
+    
+    mode: 'subscription',
+    line_items: [
+      {
+        price: priceId,
+        // For metered billing, do not pass quantity
+        quantity: 1,
+      },
+    ],
+    
+    mode: 'payment',
+    success_url: 'https://yeuxandi.com/success',
+    cancel_url: 'https://yeuxandi.com/cancel',
+
+
+    /** 
     line_items: [
       {
         price_data: {
@@ -40,6 +56,8 @@ exports.handler = async (_event, context) => {
     mode: 'payment',
     success_url: 'https://yeuxandi.com/success',
     cancel_url: 'https://yeuxandi.com/cancel',
+  **/
+
     });
   return {
     statusCode: 200,
