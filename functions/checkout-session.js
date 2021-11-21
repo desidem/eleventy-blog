@@ -36,3 +36,5 @@ const session = await stripe.checkout.sessions.create({
 
 /** 
 app.listen(4242, () => console.log('Running on port 4242')); **/
+
+console.log("hiya"); 
