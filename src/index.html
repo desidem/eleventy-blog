@@ -130,8 +130,21 @@ const token = user ? await netlifyIdentity.currentUser().jwt(true) : false;
        b1.addEventListener('click', () => {
          netlifyIdentity.logout();
        });
-   /**    b2.innerText = 'Purchase Subscription';
+       b2.innerText = 'Purchase Subscription';
        b2.addEventListener('click', () => {
+        fetch('/.netlify/functions/create-manage-link', {
+          method: 'POST',
+          headers: {
+          Authorization: `Bearer ${user.token.access_token}`,
+        },
+       })
+         .then((res) => res.json())
+         .then((link) => {
+           window.location.href = link;
+         })
+         .catch((err) => console.error(err));
+
+       });
 
 // TODO handle subscription management
 /**
@@ -290,9 +303,7 @@ fetch('/.netlify/functions/checkout-session', {
   </script>
 
 <html>
-  <head>
-    <title>Buy cool new product</title>
-  </head>
+  <p>help</p>
   <body>
     <form action="/create-checkout-session" method="POST">
       <button type="submit">Checkout</button>
@@ -334,3 +345,22 @@ fetch('/.netlify/functions/checkout-session', {
     </div>
   </div>
 </section>
+
+<script>
+const button3 = document.getElementById('checkout-and-portal-button');
+button3.addEventListener('click', () => {
+  // TODO handle subscription management
+fetch('/.netlify/functions/create-checkout-session', {
+   method: 'POST',
+   headers: {
+   Authorization: `Bearer ${user.token.access_token}`,
+ },
+})
+  .then((res) => res.json())
+  .then((link) => {
+    window.location.href = link;
+  })
+  .catch((err) => console.error(err));
+
+});
+</script>
