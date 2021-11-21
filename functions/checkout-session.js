@@ -3,7 +3,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const app = express();
 app.use(express.static('public')); **/
 
-const priceId = '{{PRICE_ID}}'
+/** const priceId = '{{PRICE_ID}}' **/
 //const YOUR_DOMAIN = 'http://yeuxandi.com';
 
 /** app.post('/create-checkout-session', async (req, res) => { **/
@@ -25,8 +25,8 @@ const priceId = '{{PRICE_ID}}'
       },
     ],
     mode: 'payment',
-    success_url: `https://yeuxandi.com/success.html`,
-    cancel_url: `https://yeuxandi.com/cancel.html`,
+    success_url: `{process.env.URL}/success.html`,
+   /** cancel_url: `https://yeuxandi.com/cancel.html`, **/
   });
 
   res.redirect(303, session.url);
