@@ -7,6 +7,8 @@ module.exports = function (eleventyConfig) {
     // Watch the `css` directory for changes
     eleventyConfig.addWatchTarget('css');
 
+    eleventyConfig.addPassthroughCopy('src/_redirects');
+
     eleventyConfig.addFilter('readableDate', (dateObj) => {
         return DateTime.fromJSDate(dateObj, { zone: 'utc'}).toFormat(
             'dd LLL yyyy'
