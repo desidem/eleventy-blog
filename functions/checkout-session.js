@@ -33,10 +33,10 @@ exports.handler = async (_event, context) => {
         // For metered billing, do not pass quantity
         quantity: 1,
       },
-    ], /** 
+    ],  
     automatic_tax: {
       enabled: true,
-    }, **/
+    }, 
   /**   mode: 'payment', **/
 
     success_url: 'https://yeuxandi.com/success',
