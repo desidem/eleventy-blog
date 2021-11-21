@@ -44,8 +44,8 @@ exports.handler = async (_event, context) => {
     }, 
   /**   mode: 'payment', **/
 
-    success_url: 'https://yeuxandi.com/success',
-    cancel_url: 'https://yeuxandi.com/cancel',
+    success_url: 'https://yeuxandi.com/success-manage/index',
+    cancel_url: 'https://yeuxandi.com/index',
 
 
     /** 
