@@ -12,5 +12,10 @@ module.exports = function (eleventyConfig) {
             'dd LLL yyyy'
         );
     });
+    return {
+        dir: {
+            input: "src",
+            output: "_site"
+        }
   };
-
+};
