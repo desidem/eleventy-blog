@@ -23,7 +23,7 @@ const session = await stripe.checkout.sessions.create({
     line_items: [
       {
         // Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
-        price: priceId,
+        price: price_1JtNOFACG3Zsu2XFU4il0Ki3,
         quantity: 1,
       },
     ],
