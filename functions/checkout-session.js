@@ -34,9 +34,10 @@ exports.handler = async (_event, context) => {
         quantity: 1,
       },
     ],  
+    /** 
     tax_rates: [
       '{{TAX_RATE_ID}}',
-    ],
+    ],**/
     /** 
     automatic_tax: {
       enabled: true,
