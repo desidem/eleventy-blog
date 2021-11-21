@@ -1,8 +1,8 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const { faunaFetch } = require('./utils/fauna');
 
-exports.handler = async (event) => {
-  const { user } = JSON.parse(event.body);
+exports.handler = async ({ body, headers }, context) => {
+ /**  const { user } = JSON.parse(event.body); **/
 
   const stripeEvent = stripe.webhooks.constructEvent(
     body,
@@ -17,7 +17,7 @@ exports.handler = async (event) => {
 
  if (stripeEvent.type !== 'customer.subscription.created') return;
 
- /** const subscription = stripeEvent.data.object; **/
+ const subscription = stripeEvent.data.object; 
 
 
 /** 
@@ -54,7 +54,7 @@ exports.handler = async ({ body, headers }, context) => {
   });
 **/
   // store the Netlify and Stripe IDs in Fauna
-  await faunaFetch({
+  const result = await faunaFetch({
     query: `
       mutation ($netlifyID: ID!, $stripeID: ID!) {
         createUser(data: { netlifyID: $netlifyID, stripeID: $stripeID }) {
@@ -65,7 +65,7 @@ exports.handler = async ({ body, headers }, context) => {
     `,
     variables: {
       netlifyID: user.id,
-      stripeID: customer.id,
+      stripeID: subscription.customer,
     },
   });
 
