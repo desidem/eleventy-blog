@@ -22,13 +22,26 @@ exports.handler = async ({ body, headers }, context) => {
 
     const result = await faunaFetch({
       query: `
+      mutation ($netlifyID: ID!, $stripeID: ID!) {
+        createUser(data: { netlifyID: $netlifyID, stripeID: $stripeID }) {
+          netlifyID
+          stripeID
+        }
+      }
+    `,
+      
+      /** 
+      
+      `
           query ($stripeID: ID!) {
             getUserByStripeID(stripeID: $stripeID) {
               netlifyID
             }
           }
-        `,
+        `, **/
       variables: {
+        netlifyID: user.id,
+        stripeID: customer.id,
         stripeID: subscription.customer,
       },
     });
@@ -138,3 +151,5 @@ if (stripeEvent.type == 'customer.subscription.deleted') {
     };
   }
 };
+
+console.log("hiya"); 
