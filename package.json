@@ -1,7 +1,6 @@
 {
   "name": "eleventy-blog",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "build": "eleventy",
@@ -15,5 +14,14 @@
   },
   "dependencies": {
     "luxon": "^2.0.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/desidem/eleventy-blog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/desidem/eleventy-blog/issues"
+  },
+  "homepage": "https://github.com/desidem/eleventy-blog#readme",
+  "description": ""
 }

@@ -8,3 +8,6 @@
 
 [functions]
   directory = "functions"
+
+[layouts]
+  directory = "_includes"
