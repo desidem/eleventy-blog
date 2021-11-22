@@ -19,11 +19,12 @@ exports.handler = async (event) => {
       
       const customer = stripeEvent.data.object;
 
-
+/** 
   const customer = await stripe.checkout.sessions.completed({
      customer: customer.data.customer,
      return_url: process.env.URL, 
   });
+  **/
 
 /** 
   const customer = await stripe.customers.create({ id: user.id });
