@@ -1,30 +1,12 @@
 /** was named create-manage-link **/
-
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const { faunaFetch } = require('./utils/fauna');
 
 exports.handler = async (_event, context) => {
   const { user } = context.clientContext;
-/** 
-  const result = await faunaFetch({
-    query: `
-      query ($netlifyID: ID!) {
-        getUserByNetlifyID(netlifyID: $netlifyID) {
-          stripeID
-        }
-      }
-    `,
-    variables: {
-      netlifyID: user.id,
-    },
-  });
 
-  const { stripeID } = result.data.getUserByNetlifyID;
-
-  /** */
-  
   const priceId = 'price_1JtNOFACG3Zsu2XFU4il0Ki3'; 
- 
+  
   const link = await stripe.checkout.sessions.create({
     
     mode: 'subscription',
@@ -35,37 +17,13 @@ exports.handler = async (_event, context) => {
         quantity: 1,
       },
     ],  
-    /** 
-    tax_rates: [
-      '{{TAX_RATE_ID}}',
-    ],**/
     
     automatic_tax: {
       enabled: true,
     }, 
-  /**   mode: 'payment', **/
 
     success_url: 'https://yeuxandi.com/success-manage/index',
     cancel_url: 'https://yeuxandi.com/index',
-
-
-    /** 
-    line_items: [
-      {
-        price_data: {
-          currency: 'usd',
-          product_data: {
-            name: 'T-shirt',
-          },
-          unit_amount: 2000,
-        },
-        quantity: 1,
-      },
-    ],
-    mode: 'payment',
-    success_url: 'https://yeuxandi.com/success',
-    cancel_url: 'https://yeuxandi.com/cancel',
-  **/
 
     });
   return {
