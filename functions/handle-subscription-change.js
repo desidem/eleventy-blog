@@ -17,8 +17,24 @@ exports.handler = async ({ body, headers }, context) => {
     const subscription = stripeEvent.data.object;
 /**    const subscription = stripeEvent.data.object;**/
 /**    const { user } = context.clientContext; **/
-    const result = await faunaFetch({
-      
+   
+const result = await faunaFetch({
+      /** 
+      query: `
+      mutation ($netlifyID: ID!, $stripeID: ID!) {
+        createUser(data: { netlifyID: $netlifyID, stripeID: $stripeID }) {
+          netlifyID
+          stripeID
+        }
+      }
+    `,
+    variables: {
+      netlifyID: user.id,
+      stripeID: customer.id,
+**/
+
+
+
         query: `
             query ($stripeID: ID!) {
               getUserByStripeID(stripeID: $stripeID) {
@@ -28,7 +44,7 @@ exports.handler = async ({ body, headers }, context) => {
           `,
         variables: {
 
-          stripeID: subscription.customer,
+          stripeID: subscription.customer, 
         /**   stripeID: subscription.customer,*/
 
           /** stripeID: subscription.data.customer, */
