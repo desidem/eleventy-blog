@@ -15,7 +15,7 @@ exports.handler = async ({ body, headers }, context) => {
     if (stripeEvent.type !== 'customer.subscription.updated') return;
 
     const subscription = stripeEvent.data.object;
-    const { user } = context.clientContext;
+/**    const { user } = context.clientContext; **/
     const result = await faunaFetch({
       
         query: `
@@ -26,7 +26,7 @@ exports.handler = async ({ body, headers }, context) => {
             }
           `,
         variables: {
-          stripeID: subscription.data.customer,
+          stripeID: subscription.customer,
 
           /** stripeID: subscription.data.customer, */
         }, 
