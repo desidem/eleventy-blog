@@ -31,6 +31,8 @@ exports.handler = async (event) => {
       }
     `,
      variables: {
+        netlifyID: user.id,
+      /** 
       netlifyID: user.id,
   /**    stripeID: subscription.customer, **/
     }, 
