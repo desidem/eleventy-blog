@@ -22,7 +22,7 @@ exports.handler = async (_event, context) => {
 **/
 
 
-const { stripeID } = result.data.getUserByNetlifyID;
+  const { stripeID } = result.data.getUserByNetlifyID;
 
   const priceId = 'price_1JtNOFACG3Zsu2XFU4il0Ki3'; 
   
