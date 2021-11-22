@@ -6,8 +6,9 @@ exports.handler = async (event) => {
 
 
   // create a new customer in Stripe
-  const customer = await stripe.customers.create({ id: user.id });
+  const customer = await stripe.customers.create({ email: user.email });
 //const customer = await stripe.customers.create({ email: user.email });
+//const customer = await stripe.customers.create({ id: user.id });
   // subscribe the new customer to the free plan
 
   // store the Netlify and Stripe IDs in Fauna
