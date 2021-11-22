@@ -5,7 +5,7 @@ const { faunaFetch } = require('./utils/fauna');
 
 exports.handler = async (_event, context) => {
   const { user } = context.clientContext;
-
+/** 
   const result = await faunaFetch({
     query: `
       query ($netlifyID: ID!) {
@@ -21,9 +21,10 @@ exports.handler = async (_event, context) => {
 
   const { stripeID } = result.data.getUserByNetlifyID;
 
+  /** */
   
   const priceId = 'price_1JtNOFACG3Zsu2XFU4il0Ki3'; 
-  
+ 
   const link = await stripe.checkout.sessions.create({
     
     mode: 'subscription',

@@ -35,6 +35,25 @@ exports.handler = async ({ body, headers }, context) => {
     const { user } = context.clientContext;
     const result = await faunaFetch({
       
+
+      
+        query: `
+            query ($stripeID: ID!) {
+              getUserByStripeID(stripeID: $stripeID) {
+                netlifyID
+              }
+            }
+          `,
+        variables: {
+          stripeID: subscription.customer,
+        },
+
+
+
+
+
+/** 
+      
       query: `
       mutation ($netlifyID: ID!, $stripeID: ID!) {
         createUser(data: { netlifyID: $netlifyID, stripeID: $stripeID }) {
@@ -42,7 +61,7 @@ exports.handler = async ({ body, headers }, context) => {
           stripeID
         }
       }
-    `,
+    `,  **/
   /**  query:  `
           query ($stripeID: ID!) {
             getUserByStripeID(stripeID: $stripeID) {
@@ -50,12 +69,13 @@ exports.handler = async ({ body, headers }, context) => {
             }
           }
         `,  **/
-      variables: {
-   /**   netlifyID: user.sub, **/
-   netlifyID: user.id,
-      stripeID: customer.id,
-     /**    stripeID:  subscription.customer, **/
-      },
+/**      variables: {
+      netlifyID: user.sub, 
+      stripeID:  subscription.customer, 
+ /**  netlifyID: user.id,
+      stripeID: customer.id, }, **/
+      
+      
     });
 
     const { netlifyID } = result.data.getUserByStripeID;
@@ -165,4 +185,5 @@ if (stripeEvent.type == 'customer.subscription.deleted') {
 };
 
 console.log("olla"); 
+
 
