@@ -51,7 +51,7 @@ const result = await faunaFetch({
         }, 
     });
 
-    const { netlifyID } = result.data.getUserByStripeID;
+const { netlifyID } = result.data.getUserByStripeID;
 
 
 
