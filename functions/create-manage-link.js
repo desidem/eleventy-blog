@@ -11,10 +11,7 @@ exports.handler = async (_event, context) => {
           stripeID
         }
       }
-    `,
-    variables: {
-      netlifyID: user.sub,
-    },
+    `
   });
 
   const { stripeID } = result.data.getUserByNetlifyID;
