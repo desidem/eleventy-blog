@@ -11,7 +11,7 @@ exports.handler = async (event) => {
 
  // stripe.checkout.sessions.create
 
-  const customer = await stripe.subscriptions.create({ customer: customer.id});
+ /**const customer = await stripe.subscriptions.create({ customer: customer.id}); **/
 
 /**  const customer = await stripe.customers.create({ email: user.email }); **/
   // create a new customer in Stripe
@@ -31,8 +31,8 @@ exports.handler = async (event) => {
       }
     `,
      variables: {
-      netlifyID: user.id,
-      stripeID: customer.id,
+      netlifyID: user,
+      stripeID: customer,
     }, 
   });
 
