@@ -5,8 +5,8 @@ exports.handler = async (event) => {
   const { user } = JSON.parse(event.body);
 
 
-  const customer = await stripe.checkout.sessions.create({
-     customer: stripeID,
+  const customer = await stripe.checkout.sessions.completed({
+     customer: customer.data.customer,
      return_url: process.env.URL, 
   });
 
@@ -46,8 +46,8 @@ exports.handler = async (event) => {
     `
      ,
      variables: {
-        netlifyID,
-        stripeID: customer
+     /*   netlifyID, **/
+        stripeID: customer,
       /** 
       netlifyID: user.id,
   /**    stripeID: subscription.customer, **/
