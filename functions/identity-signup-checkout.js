@@ -7,7 +7,7 @@ exports.handler = async (event) => {
 
   const customer = await stripe.checkout.sessions.create({
      customer: stripeID,
-    return_url: process.env.URL, 
+     return_url: process.env.URL, 
   });
 
 /** 
