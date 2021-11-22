@@ -4,6 +4,12 @@ const { faunaFetch } = require('./utils/fauna');
 exports.handler = async (event) => {
   const { user } = JSON.parse(event.body);
 
+
+  const customer = await stripe.checkout.sessions.create({
+     customer: stripeID,
+    return_url: process.env.URL, 
+  });
+
 /** 
   const customer = await stripe.customers.create({ id: user.id });
 //const customer = await stripe.customers.create({ email: user.email });
@@ -38,14 +44,14 @@ exports.handler = async (event) => {
         }
       }
     `
-    /** ,
+     ,
      variables: {
         netlifyID,
-        stripeID,
+        stripeID: customer
       /** 
       netlifyID: user.id,
-  /**    stripeID: subscription.customer, **//** 
-    }, **/
+  /**    stripeID: subscription.customer, **/
+    }, 
   });
 
   return {
