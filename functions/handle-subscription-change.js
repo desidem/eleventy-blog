@@ -26,7 +26,9 @@ exports.handler = async ({ body, headers }, context) => {
             }
           `,
         variables: {
-          stripeID: subscription.customer,
+          stripeID: subscription.data.customer,
+
+          /** stripeID: subscription.data.customer, */
         }, 
     });
 
