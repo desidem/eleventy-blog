@@ -13,7 +13,7 @@ exports.handler = async ({ body, headers }, context) => {
 
     if (stripeEvent.type !== 'customer.subscription.created') return;
     
-    const customer = stripeEvent.data.object;
+    const customer = stripeEvent.data.customer;
 
 
   // create a new customer in Stripe
@@ -33,8 +33,11 @@ exports.handler = async ({ body, headers }, context) => {
       }
     `,
     variables: {
-      netlifyID: user.id,
-      stripeID: customer.id,
+      netlifyID,
+      stripeID: customer,
+
+     /** netlifyID: user.id,
+      stripeID: customer.id, **/
     },
   });
 
