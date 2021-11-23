@@ -1,29 +1,9 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const { faunaFetch } = require('./utils/fauna');
 
-exports.handler = async (_event, context) => {
-  const { user } = context.clientContext;
-
-exports.handler = async ({ body, headers }, context) => {
-    try {
-      // make sure this event was sent legitimately.
-      const stripeEvent = stripe.webhooks.constructEvent(
-        body,
-        headers['stripe-signature'],
-        process.env.STRIPE_CHECKOUT_WEBHOOK_SECRET,
-      );
+exports.handler = async (event) => {
+  const { user } = JSON.parse(event.body);
     
-      if (stripeEvent.type !== 'checkout.session.completed') return;
-
-
-  const checkout = stripeEvent.data.object;
-
-  const customer = checkout.customer;
-
-
-  
-
-
 
 
   // create a new customer in Stripe
@@ -43,7 +23,7 @@ exports.handler = async ({ body, headers }, context) => {
     `,
     variables: {
       netlifyID: user.id, //or other? Where to get the id from
-      stripeID: checkout.customer,
+     
     },
   });
 
@@ -55,14 +35,8 @@ exports.handler = async ({ body, headers }, context) => {
       },
     }),
   };
-} catch (err) {
-  return {
-    statusCode: 400,
-    body: 'Webhook Error: $(err.message}',
-  };
-}
-
 
 };
 
 console.log("hiya"); 
+
