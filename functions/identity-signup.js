@@ -22,7 +22,7 @@ exports.handler = async (event) => {
       }
     `,
     variables: {
-      netlifyID: user, //or other? Where to get the id from
+      netlifyID, //or other? Where to get the id from
      
     },
   });
