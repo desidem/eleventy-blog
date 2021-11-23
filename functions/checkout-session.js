@@ -4,6 +4,7 @@ const { faunaFetch } = require('./utils/fauna');
 
 exports.handler = async (_event, context) => {
   const { user } = context.clientContext;
+  
 
 
   const customer = stripeEvent.data.object;

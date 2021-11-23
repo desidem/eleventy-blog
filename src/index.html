@@ -2,9 +2,6 @@
 title: Homepage
 layout: base.njk
 ---
-<script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
-
 
 
 <style>
@@ -214,7 +211,8 @@ fetch('/.netlify/functions/checkout-session', {
 
 
 /** this very important for auto sign in after buying sub**/
-       netlifyIdentity.refresh(true);
+       
+    netlifyIdentity.refresh(true);
      } else {
        // if no one is logged in, show login/signup options
        b1.innerText = 'Log In';
