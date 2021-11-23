@@ -2,6 +2,9 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const { faunaFetch } = require('./utils/fauna');
 
+exports.handler = async (event) => {
+  const { user } = JSON.parse(event.body)};
+
 exports.handler = async ({ body, headers }, context) => {
   try {
     // make sure this event was sent legitimately.
@@ -33,7 +36,7 @@ exports.handler = async ({ body, headers }, context) => {
       }
     `,
     variables: {
-      netlifyID: user, 
+      netlifyID: user.id, 
       stripeID: customer,
 
      /** netlifyID: user.id,
