@@ -1,7 +1,6 @@
+/** THIS SIGNUP CREATES SHOUDL CREATE IDS for STRIPE AND NETLIFY at CHECKOUT **/
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-const fetch = require('isomorphic-fetch');
 const { faunaFetch } = require('./utils/fauna');
-
 
 exports.handler = async ({ body, headers }, context) => {
   try {
@@ -14,13 +13,18 @@ exports.handler = async ({ body, headers }, context) => {
 
     if (stripeEvent.type !== 'customer.subscription.created') return;
     
-    const subscription = stripeEvent.data.object;
-/**    const subscription = stripeEvent.data.object;**/
-/**    const { user } = context.clientContext; **/
-   
-const result = await faunaFetch({
-      /** 
-      query: `
+    const customer = stripeEvent.data.object;
+
+
+  // create a new customer in Stripe
+ // const customer = await stripe.invoice.created;
+//const customer = await stripe.customers.create({ email: user.email });
+//const customer = await stripe.customers.create({ id: user.id });
+  // subscribe the new customer to the free plan
+
+  // store the Netlify and Stripe IDs in Fauna
+  await faunaFetch({
+    query: `
       mutation ($netlifyID: ID!, $stripeID: ID!) {
         createUser(data: { netlifyID: $netlifyID, stripeID: $stripeID }) {
           netlifyID
@@ -31,57 +35,19 @@ const result = await faunaFetch({
     variables: {
       netlifyID: user.id,
       stripeID: customer.id,
-**/
+    },
+  });
 
-
-
-    query: `
-      mutation ($netlifyID: ID!, $stripeID: ID!) {
-        createUser(data: { netlifyID: $netlifyID, stripeID: $stripeID }) {
-          netlifyID
-          stripeID
-        }
-      }
-    `,
-    
-        variables: {
-
-          stripeID: subscription.customer, 
-        /**   stripeID: subscription.customer,*/
-
-          /** stripeID: subscription.data.customer, */
-        }, 
-    });
-
-const { netlifyID } = result.data.getUserByStripeID;
-
-
-
-    // take the first word of the plan name and use it as the role--was called nickname in UI
-const plan = subscription.items.data[0].plan.nickname;
-const role = plan.split(' ')[0].toLowerCase(); 
-
-    // send a call to the Netlify Identity admin API to update the user role
-    const { identity } = context.clientContext;
-    await fetch(`${identity.url}/admin/users/${netlifyID}`, {
-      method: 'PUT',
-      headers: {
-        // note that this is a special admin token for the Identity API
-        Authorization: `Bearer ${identity.token}`,
+  return {
+    statusCode: 200,
+    body: JSON.stringify({
+      app_metadata: {
+        roles: ['temp'],
       },
-      body: JSON.stringify({
-        app_metadata: {
-          roles: [role],
-        },
-      }),
-    });
+    }),
+  };
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ received: true }),
-    };
-  
-  } catch (err) {
+} catch (err) {
     return {
       statusCode: 400,
       body: `Webhook Error: ${err.message}`,
@@ -89,5 +55,5 @@ const role = plan.split(' ')[0].toLowerCase();
   }
 };
 
-console.log("olla"); 
+console.log("hiyo"); 
 
