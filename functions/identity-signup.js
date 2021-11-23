@@ -11,9 +11,27 @@ exports.handler = async (event) => {
 //  const customer = await stripe.customers.create({ id: user.id }); //
 //const customer = await stripe.customers.create({ email: user.email });
   // subscribe the new customer to the free plan
+ 
+  
+ await faunaFetch({
+   query: `
+  mutation ($netlifyID: ID!, $stripeID: ID!) {
+    createUser(data: { netlifyID: $netlifyID, stripeID: $stripeID }) {
+      netlifyID
+      stripeID
+    }
+  }
+`,
+variables: {
+  netlifyID: user.id,
+ /**  stripeID: customer.id,  **/
+},
+});
 
   // store the Netlify and Stripe IDs in Fauna
  /**  const netlifyID = **/
+
+ /** 
  await faunaFetch({
     query: `
       mutation ($netlifyID: ID!) {
@@ -24,9 +42,9 @@ exports.handler = async (event) => {
     `,
     variables: {
       netlifyID: user.id,
-     /** netlifyID: user.id, //or other? Where to get the id from **/
+     /** netlifyID: user.id, //or other? Where to get the id from **/ /** 
     },
-  });
+  }); **/
 
   return {
     statusCode: 200,
