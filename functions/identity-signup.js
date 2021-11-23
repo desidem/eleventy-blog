@@ -40,5 +40,5 @@ exports.handler = async (event) => {
 };
 
 console.log("hiya"); 
-console.log({ netlifyID }); 
+
 
