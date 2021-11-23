@@ -1,3 +1,4 @@
+/** THIS SIGNUP CREATES IDS for STRIPE AND NETLIFY BUT STRIPE DOES NOT APPEAR TO FOLLOW THROUGH **/
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const { faunaFetch } = require('./utils/fauna');
 

@@ -1,4 +1,4 @@
-/** THIS WORKS BUT CREATES A NEW STRIPE CUSTOMER ON CHECKOUT **/ 
+/** THIS WORKS BUT CREATES A NEW STRIPE NOW AND THEN ANOTHER CUSTOMER ON CHECKOUT **/ 
 /** was named create-manage-link **/
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const { faunaFetch } = require('./utils/fauna');
