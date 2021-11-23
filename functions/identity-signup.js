@@ -6,7 +6,7 @@ exports.handler = async (event) => {
   const { user } = JSON.parse(event.body);
 
 
- const netlifyID = user.id; 
+ //const netlifyID = user.id; 
   // create a new customer in Stripe
 //  const customer = await stripe.customers.create({ id: user.id }); //
 //const customer = await stripe.customers.create({ email: user.email });
@@ -14,9 +14,9 @@ exports.handler = async (event) => {
 
   // store the Netlify and Stripe IDs in Fauna
  /**  const netlifyID = **/
- await faunaFetch({
+ const netlifyId = await faunaFetch({
     query: `
-      mutation ($netlifyID: ID! ) {
+      mutation ($netlifyID: ID!) {
         createUser(data: { netlifyID: $netlifyID }) {
           netlifyID
         }
