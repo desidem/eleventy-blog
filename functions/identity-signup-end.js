@@ -1,4 +1,4 @@
-/** THIS SIGNUP CREATES IDS for STRIPE AND NETLIFY BUT STRIPE DOES NOT APPEAR TO FOLLOW THROUGH **/
+/** THIS SIGNUP CREATES SHOUDL CREATE IDS for STRIPE AND NETLIFY at CHECKOUT **/
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const { faunaFetch } = require('./utils/fauna');
 
@@ -7,7 +7,7 @@ exports.handler = async (event) => {
 
 
   // create a new customer in Stripe
-  const customer = await stripe.customers.create({ email: user.email });
+  const customer = await stripe.invoice.finalized;
 //const customer = await stripe.customers.create({ email: user.email });
 //const customer = await stripe.customers.create({ id: user.id });
   // subscribe the new customer to the free plan
