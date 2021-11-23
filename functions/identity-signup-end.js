@@ -33,7 +33,7 @@ exports.handler = async ({ body, headers }, context) => {
       }
     `,
     variables: {
-      netlifyID,
+      netlifyID: user, 
       stripeID: customer,
 
      /** netlifyID: user.id,
