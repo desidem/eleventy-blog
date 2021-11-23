@@ -1,5 +1,6 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const { faunaFetch } = require('./utils/fauna');
+const fetch = require('isomorphic-fetch');
 
 exports.handler = async (event) => {
   const { user } = JSON.parse(event.body);
@@ -14,15 +15,14 @@ exports.handler = async (event) => {
   // store the Netlify and Stripe IDs in Fauna
   await faunaFetch({
     query: `
-      mutation ($netlifyID: ID!) {
+      mutation ($netlifyID: ID!, $stripeID: ID!) {
         createUser(data: { netlifyID: $netlifyID }) {
           netlifyID
-      
         }
       }
     `,
     variables: {
-      netlifyID: user.id, //or other? Where to get the id from
+      netlifyID: user, //or other? Where to get the id from
      
     },
   });
