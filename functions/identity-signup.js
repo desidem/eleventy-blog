@@ -6,7 +6,7 @@ exports.handler = async (event) => {
   const { user } = JSON.parse(event.body);
 
 
-    const netlifyID = user.id;
+ /**    const netlifyID = user.id; **/
   // create a new customer in Stripe
 //  const customer = await stripe.customers.create({ id: user.id }); //
 //const customer = await stripe.customers.create({ email: user.email });
