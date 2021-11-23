@@ -1,12 +1,11 @@
+/** THIS WORKS BUT CREATES A NEW STRIPE CUSTOMER ON CHECKOUT **/ 
 /** was named create-manage-link **/
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const { faunaFetch } = require('./utils/fauna');
 
 exports.handler = async (_event, context) => {
   const { user } = context.clientContext;
-
-
-   
+/** 
   const result = await faunaFetch({
     query: `
       query ($netlifyID: ID!) {
@@ -16,22 +15,21 @@ exports.handler = async (_event, context) => {
       }
     `,
     variables: {
-      netlifyID: user.id,
-      /** was netlifyID: user.sub, **/
+      netlifyID: user.sub,
     },
-  }); 
+  }); **/
 /** 
   const { stripeID } = result.data.getUserByNetlifyID;
 **/
 
 
-  const { stripeID } = result.data.getUserByNetlifyID; 
+ /**  const { stripeID } = result.data.getUserByNetlifyID; **/
 
   const priceId = 'price_1JtNOFACG3Zsu2XFU4il0Ki3'; 
   
   const link = await stripe.checkout.sessions.create({
-    customer: stripeID,
-  /**  return_url: process.env.URL,  **/
+   /** customer: stripeID,
+   return_url: process.env.URL, **/
     mode: 'subscription',
     line_items: [
       {

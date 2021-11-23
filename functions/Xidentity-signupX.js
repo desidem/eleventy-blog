@@ -1,4 +1,4 @@
-/**THIS SIGNUP AIMS TO NOT INCLUDE STRIPE IN SIGNUP **
+/**THIS SIGNUP AIMS TO NOT INCLUDE STRIPE IN SIGNUP--NOT RECORDING IN FAUNA **
  * /**const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); **/
 const { faunaFetch } = require('./utils/fauna');
 const fetch = require('isomorphic-fetch');
