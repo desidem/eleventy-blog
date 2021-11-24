@@ -40,6 +40,9 @@ exports.handler = async (_event, context) => {
     automatic_tax: {
       enabled: true,
     }, 
+    customer_update: {
+      address: 'auto',
+    },
 
     success_url: 'https://yeuxandi.com/success-manage/index',
     cancel_url: 'https://yeuxandi.com/index',
