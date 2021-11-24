@@ -1,4 +1,4 @@
-/** THIS CHECKOUT WORKS BUT DOES NOT DO FAUNA was named create-manage-link **/
+/** THIS CHECKOUT ATTEMPTS TO USE FAUNA was named create-manage-link **/
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const { faunaFetch } = require('./utils/fauna');
 
