@@ -25,7 +25,7 @@ exports.handler = async (_event, context) => {
   
   const link = await stripe.checkout.sessions.create({
    customer: stripeID,
-   return_url: process.env.URL, 
+/**   return_url: process.env.URL, **/
     mode: 'subscription',
     line_items: [
       {
