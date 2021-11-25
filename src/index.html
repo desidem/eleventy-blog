@@ -350,9 +350,9 @@ const button3 = document.getElementById('checkout-and-portal-button');
 button3.addEventListener('click', () => {
   // TODO handle subscription management 
 
-  
-     fetch('/.netlify/functions/create-manage-link', { 
-       /**     fetch('./functions/checkout-session', {**/
+ 
+         // TODO handle subscription management
+       fetch('/.netlify/functions/create-manage-link', {
           method: 'POST',
           headers: {
           Authorization: `Bearer ${user.token.access_token}`,
@@ -365,7 +365,6 @@ button3.addEventListener('click', () => {
          .catch((err) => console.error(err));
 
        });
-
 
 
 
