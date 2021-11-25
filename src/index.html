@@ -304,7 +304,7 @@ fetch('/.netlify/functions/checkout-session', {
 <html>
   <p>help</p>
   <body>
-    <form action="/create-checkout-session" method="POST">
+    <form action="/create-manage-link" method="POST">
       <button type="submit">Checkout</button>
     </form>
   </body>
@@ -351,7 +351,26 @@ const button3 = document.getElementById('checkout-and-portal-button');
 button3.addEventListener('click', () => {
   // TODO handle subscription management **/
 
- <button>Manage Subscription</button>
+  const button3 = document.getElementById('left');
+  const login = () => netlifyIdentity.open('login');
+
+
+  b2.innerText = 'Purchase Subscription';
+       b2.addEventListener('click', () => {
+     fetch('/.netlify/functions/checkout-session', { 
+       /**     fetch('./functions/checkout-session', {**/
+          method: 'POST',
+          headers: {
+          Authorization: `Bearer ${user.token.access_token}`,
+        },
+       })
+         .then((res) => res.json())
+         .then((link) => {
+           window.location.href = link;
+         })
+         .catch((err) => console.error(err));
+
+       });
          // TODO handle subscription management
        fetch('/.netlify/functions/create-manage-link', {
           method: 'POST',
@@ -368,7 +387,44 @@ button3.addEventListener('click', () => {
        });
 
 
+     
 
+    
+    // by default, add login and signup functionality
+    button1.addEventListener('click', login);
+    button2.addEventListener('click', signup);
+
+    const updateUserInfo = (user) => {
+    const container = document.querySelector('.user-info');
+
+    // cloning the buttons removes existing event listeners
+    const b1 = button1.cloneNode(true);
+    const b2 = button2.cloneNode(true);
+
+     // empty the user info div
+     container.innerHTML = '';
+
+     if (user) {
+       b1.innerText = 'Log Out';
+       b1.addEventListener('click', () => {
+         netlifyIdentity.logout();
+       });
+       b2.innerText = 'Purchase Subscription';
+       b2.addEventListener('click', () => {
+     fetch('/.netlify/functions/checkout-session', { 
+       /**     fetch('./functions/checkout-session', {**/
+          method: 'POST',
+          headers: {
+          Authorization: `Bearer ${user.token.access_token}`,
+        },
+       })
+         .then((res) => res.json())
+         .then((link) => {
+           window.location.href = link;
+         })
+         .catch((err) => console.error(err));
+
+       });
 
 
 
