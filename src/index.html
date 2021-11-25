@@ -228,7 +228,7 @@ fetch('/.netlify/functions/checkout-session', {
 
     
    };
-   
+   if (user) {
   const button3 = document.getElementById('bottom');
   
   button3.addEventListener('click', () => {
@@ -246,7 +246,7 @@ fetch('/.netlify/functions/checkout-session', {
 
        });
     
-         
+   };   
            // remove any existing content from the content container
   
   /**
