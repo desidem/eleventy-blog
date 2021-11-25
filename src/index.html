@@ -307,7 +307,7 @@ fetch('/.netlify/functions/checkout-session', {
        fetch('/.netlify/functions/create-manage-link', {
           method: 'POST',
           headers: {
-          Authorization: `Bearer ${user.token.access_token}`,
+          Authorization: `Bearer ${netlifyIdentity.currentUser().token.access_token}`,
         },
        })
          .then((res) => res.json())
