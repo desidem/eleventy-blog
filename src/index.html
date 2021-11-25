@@ -349,17 +349,29 @@ fetch('/.netlify/functions/checkout-session', {
 const button3 = document.getElementById('checkout-and-portal-button');
 button3.addEventListener('click', () => {
   // TODO handle subscription management 
-fetch('../functions/create-checkout-session', {
-   method: 'POST',
-   headers: {
-   Authorization: `Bearer ${user.token.access_token}`,
- },
-})
-  .then((res) => res.json())
-  .then((link) => {
-    window.location.href = link;
-  })
-  .catch((err) => console.error(err));
 
-});
+  
+     fetch('/.netlify/functions/create-manage-link', { 
+       /**     fetch('./functions/checkout-session', {**/
+          method: 'POST',
+          headers: {
+          Authorization: `Bearer ${user.token.access_token}`,
+        },
+       })
+         .then((res) => res.json())
+         .then((link) => {
+           window.location.href = link;
+         })
+         .catch((err) => console.error(err));
+
+       });
+
+
+
+
+
+
+
+
+
 </script>
