@@ -13,7 +13,7 @@ exports.handler = async (_event, context) => {
       }
     `,
     variables: {
-      netlifyID: user.id,
+      netlifyID,
   /**    netlifyID: user.sub, **/
     },
   });
