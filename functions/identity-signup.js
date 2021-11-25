@@ -9,7 +9,12 @@ exports.handler = async (event) => {
    const customer = await stripe.customers.create({ email: user.email });
   **/
    const customer = await stripe.customers.create({ email: user.email,
-      customer: customer.id, });
+      });
+  
+    await stripe.customers.create({
+        customer: customer.id,
+        description: 'on sign up',
+    });
 
   // create a new customer in Stripe
   //const customer = await stripe.invoice.created;//
