@@ -1,5 +1,5 @@
 ---
-title: Log In Manage
+title: Sign Up
 layout: base.njk
 ---
 
@@ -11,7 +11,9 @@ layout: base.njk
 
   .user-info {
     align-items: center;
-   
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
     list-style: none;
     padding: 0;
   }
@@ -37,7 +39,7 @@ layout: base.njk
 
 <div class="user-info">
   <button id="left">Log In</button>
-  
+  <button id="right">Sign Up</button>
 </div>
 
 <div class="corgi-content">
@@ -52,8 +54,7 @@ layout: base.njk
     <div class="pro"></div>
   </div>
 </div>
-<button id="bottom">Manage Subscription!</button>
-<button onclick="myFunction()">Try it</button>
+
 
 <script>
 function myFunction() {
@@ -65,29 +66,26 @@ function myFunction() {
   <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
 
-
-
-
   <script>
-
 
 
 /** must include **/
     const button1 = document.getElementById('left');
-    
+    const button2 = document.getElementById('right');
+
     const login = () => netlifyIdentity.open('login');
-    
+    const signup = () => netlifyIdentity.open('signup');
 
     // by default, add login and signup functionality
     button1.addEventListener('click', login);
-    
+    button2.addEventListener('click', signup);
 
     const updateUserInfo = (user) => {
     const container = document.querySelector('.user-info');
 
     // cloning the buttons removes existing event listeners
     const b1 = button1.cloneNode(true);
-    
+    const b2 = button2.cloneNode(true);
 
      // empty the user info div
      container.innerHTML = '';
@@ -97,10 +95,22 @@ function myFunction() {
        b1.addEventListener('click', () => {
          netlifyIdentity.logout();
        });
-       
+       b2.innerText = 'Purchase Subscription';
+       b2.addEventListener('click', () => {
+     fetch('/.netlify/functions/checkout-session', { 
+       /**     fetch('./functions/checkout-session', {**/
+          method: 'POST',
+          headers: {
+          Authorization: `Bearer ${user.token.access_token}`,
+        },
+       })
+         .then((res) => res.json())
+         .then((link) => {
+           window.location.href = link;
+         })
+         .catch((err) => console.error(err));
 
-// TODO handle subscription management
-
+       });
 
 
 /** this very important for auto sign in after buying sub**/
@@ -111,20 +121,19 @@ function myFunction() {
        b1.innerText = 'Log In';
        b1.addEventListener('click', login);
 
-      
+       b2.innerText = 'Sign Up';
+       b2.addEventListener('click', signup);
      }
 
      // add the updated buttons back to the user info div
      container.appendChild(b1);
-    
+     container.appendChild(b2);
 
     
    };
-   
-  
   
            // remove any existing content from the content container
- 
+
    const handleUserStateChange = (user) => {
      updateUserInfo(user);
      
@@ -142,25 +151,38 @@ function myFunction() {
 
   </script>
 
-<script>
-  const button3 = document.getElementById('bottom');
-  
-  button3.addEventListener('click', () => {
-       fetch('/.netlify/functions/create-manage-link', {
-          method: 'POST',
-          headers: {
-          Authorization: `Bearer ${netlifyIdentity.currentUser().token.access_token}`,
-        },
-       })
-         .then((res) => res.json())
-         .then((link) => {
-           window.location.href = link;
-         })
-         .catch((err) => console.error(err));
-
-       });
-    
-</script>
-
   <p>help</p>
   
+  <div class="product">
+
+    <div class="description">
+      <h3>Starter plan</h3>
+      <h5>$20.00 / month</h5>
+    </div>
+  </div>
+
+
+
+<section class="hero is-medium is-primary is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">{{ site.title }}</h1>
+      <h2 class="subtitle">{{ site.description }}</h2>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="postlist mt-3 pt-3">
+  <div class="container">
+    <h2 class="title has-text-centered mt-3 mb-6">Recent posts</h2>
+    <div class="columns">
+     
+    </div>
+  </div>
+</section>
+
+ 
+ 
+

@@ -45,7 +45,7 @@ exports.handler = async (_event, context) => {
     },
 
     success_url: 'https://yeuxandi.com/success-manage/index',
-    cancel_url: 'https://yeuxandi.com/index',
+    cancel_url: 'https://yeuxandi.com/signup/index',
 
     });
   return {
