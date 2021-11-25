@@ -1,10 +1,7 @@
 ---
-title: Manage
+title: Homepage
 layout: base.njk
 ---
-<script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
-
 
 
 <style>
@@ -38,7 +35,7 @@ layout: base.njk
 
 </style>
 
-<h1>DO NOT Sign Up THIS IS THE MANAGE PAGE</h1>
+<h1>DO NOT Sign Up for My Test</h1>
 
 <div class="user-info">
   <button id="left">Log In</button>
@@ -57,7 +54,7 @@ layout: base.njk
     <div class="pro"></div>
   </div>
 </div>
-
+<button id="bottom">Manage Subscription!</button>
 <button onclick="myFunction()">Try it</button>
 
 <script>
@@ -132,7 +129,8 @@ const token = user ? await netlifyIdentity.currentUser().jwt(true) : false;
        });
        b2.innerText = 'Purchase Subscription';
        b2.addEventListener('click', () => {
-        fetch('/.netlify/functions/checkout-session', {
+     fetch('/.netlify/functions/checkout-session', { 
+       /**     fetch('./functions/checkout-session', {**/
           method: 'POST',
           headers: {
           Authorization: `Bearer ${user.token.access_token}`,
@@ -213,7 +211,8 @@ fetch('/.netlify/functions/checkout-session', {
 
 
 /** this very important for auto sign in after buying sub**/
-       netlifyIdentity.refresh(true);
+       
+    netlifyIdentity.refresh(true);
      } else {
        // if no one is logged in, show login/signup options
        b1.innerText = 'Log In';
@@ -229,10 +228,9 @@ fetch('/.netlify/functions/checkout-session', {
 
     
    };
-
- 
-    
-         
+   
+  
+  
            // remove any existing content from the content container
   
   /**
@@ -302,14 +300,33 @@ fetch('/.netlify/functions/checkout-session', {
 
   </script>
 
-<html>
+<script>
+  const button3 = document.getElementById('bottom');
+  
+  button3.addEventListener('click', () => {
+       fetch('/.netlify/functions/create-manage-link', {
+          method: 'POST',
+          headers: {
+          Authorization: `Bearer ${netlifyIdentity.currentUser().token.access_token}`,
+        },
+       })
+         .then((res) => res.json())
+         .then((link) => {
+           window.location.href = link;
+         })
+         .catch((err) => console.error(err));
+
+       });
+    
+</script>
+
   <p>help</p>
   <body>
-    <form action="/create-checkout-session" method="POST">
-      <button type="submit">Checkout</button>
+    <form action="/.netlify/functions/create-manage-link" method="POST">
+      <button type="submit>">MANAGE</button>
     </form>
   </body>
-</html>
+
 <section>
   <div class="product">
 
@@ -346,21 +363,6 @@ fetch('/.netlify/functions/checkout-session', {
   </div>
 </section>
 
-<script>
-const button3 = document.getElementById('checkout-and-portal-button');
-button3.addEventListener('click', () => {
-  // TODO handle subscription management 
-fetch('/.netlify/functions/create-checkout-session', {
-   method: 'POST',
-   headers: {
-   Authorization: `Bearer ${user.token.access_token}`,
- },
-})
-  .then((res) => res.json())
-  .then((link) => {
-    window.location.href = link;
-  })
-  .catch((err) => console.error(err));
+ 
+ 
 
-});
-</script>
