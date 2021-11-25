@@ -13,7 +13,7 @@ exports.handler = async (event) => {
   // subscribe the new customer to the free plan
 await stripe.subscriptions.create({
     customer: customer.id,
-    items: [{'order_id': '0'}],
+    items: [{metadata: {order_id: '1'}}],
    /**  items: [{price: process.env.STRIPE_DEFAULT_PRICE_PLAN}],**/
 
 })
