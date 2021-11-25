@@ -11,9 +11,7 @@ layout: base.njk
 
   .user-info {
     align-items: center;
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(2, 1fr);
+    
     list-style: none;
     padding: 0;
   }
@@ -38,7 +36,7 @@ layout: base.njk
 <h1>DO NOT Sign Up for My Test</h1>
 
 <div class="user-info">
-  <button id="left">Log In</button>
+  
   <button id="right">Sign Up</button>
 </div>
 
@@ -70,31 +68,28 @@ function myFunction() {
 
 
 /** must include **/
-    const button1 = document.getElementById('left');
+    
     const button2 = document.getElementById('right');
 
-    const login = () => netlifyIdentity.open('login');
+    
     const signup = () => netlifyIdentity.open('signup');
 
     // by default, add login and signup functionality
-    button1.addEventListener('click', login);
+  
     button2.addEventListener('click', signup);
 
     const updateUserInfo = (user) => {
     const container = document.querySelector('.user-info');
 
     // cloning the buttons removes existing event listeners
-    const b1 = button1.cloneNode(true);
+   
     const b2 = button2.cloneNode(true);
 
      // empty the user info div
      container.innerHTML = '';
 
      if (user) {
-       b1.innerText = 'Log Out';
-       b1.addEventListener('click', () => {
-         netlifyIdentity.logout();
-       });
+       
        b2.innerText = 'Purchase Subscription';
        b2.addEventListener('click', () => {
      fetch('/.netlify/functions/checkout-session', { 
@@ -118,15 +113,14 @@ function myFunction() {
     netlifyIdentity.refresh(true);
      } else {
        // if no one is logged in, show login/signup options
-       b1.innerText = 'Log In';
-       b1.addEventListener('click', login);
+      
 
        b2.innerText = 'Sign Up';
        b2.addEventListener('click', signup);
      }
 
      // add the updated buttons back to the user info div
-     container.appendChild(b1);
+    
      container.appendChild(b2);
 
     
