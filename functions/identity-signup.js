@@ -13,9 +13,9 @@ exports.handler = async (event) => {
   // subscribe the new customer to the free plan
 await stripe.subscriptions.create({
     customer: customer.id,
-    items: [{metadata: {order_id: '1'}}],
-   /**  items: [{price: process.env.STRIPE_DEFAULT_PRICE_PLAN}],**/
-
+    items: [{price: process.env.STRIPE_DEFAULT_PRICE_PLAN}],
+   /**  
+    * items: [{metadata: {order_id: '1'}}],**/
 })
   // store the Netlify and Stripe IDs in Fauna
   await faunaFetch({
