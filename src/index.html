@@ -229,23 +229,7 @@ fetch('/.netlify/functions/checkout-session', {
     
    };
    
-  const button3 = document.getElementById('bottom');
   
-  button3.addEventListener('click', () => {
-       fetch('/.netlify/functions/create-manage-link', {
-          method: 'POST',
-          headers: {
-          Authorization: `Bearer ${user.token.access_token}`,
-        },
-       })
-         .then((res) => res.json())
-         .then((link) => {
-           window.location.href = link;
-         })
-         .catch((err) => console.error(err));
-
-       });
-    
   
            // remove any existing content from the content container
   
@@ -316,14 +300,33 @@ fetch('/.netlify/functions/checkout-session', {
 
   </script>
 
+<script>
+  const button3 = document.getElementById('bottom');
+  
+  button3.addEventListener('click', () => {
+       fetch('/.netlify/functions/create-manage-link', {
+          method: 'POST',
+          headers: {
+          Authorization: `Bearer ${user.token.access_token}`,
+        },
+       })
+         .then((res) => res.json())
+         .then((link) => {
+           window.location.href = link;
+         })
+         .catch((err) => console.error(err));
+
+       });
+    
+</script>
 
   <p>help</p>
   <body>
     <form action="/.netlify/functions/create-manage-link" method="POST">
-      <button type="submit">Checkout</button>
+      <button type="submit>">MANAGE</button>
     </form>
   </body>
-</html>
+
 <section>
   <div class="product">
 
