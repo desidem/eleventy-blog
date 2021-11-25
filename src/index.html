@@ -357,8 +357,7 @@ button3.addEventListener('click', () => {
   // TODO handle subscription management **/
   
   const button3 = document.getElementById('bottom');
-  const login = () => netlifyIdentity.open('login');
-
+  
   button3.addEventListener('click', () => {
        fetch('/.netlify/functions/create-manage-link', {
           method: 'POST',
