@@ -228,7 +228,7 @@ fetch('/.netlify/functions/checkout-session', {
 
     
    };
-   if (user) {
+   
   const button3 = document.getElementById('bottom');
   
   button3.addEventListener('click', () => {
@@ -246,7 +246,7 @@ fetch('/.netlify/functions/checkout-session', {
 
        });
     
-   };   
+  
            // remove any existing content from the content container
   
   /**
@@ -319,7 +319,7 @@ fetch('/.netlify/functions/checkout-session', {
 
   <p>help</p>
   <body>
-    <form action="/create-manage-link" method="POST">
+    <form action="/.netlify/functions/create-manage-link" method="POST">
       <button type="submit">Checkout</button>
     </form>
   </body>
