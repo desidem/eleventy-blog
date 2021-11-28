@@ -20,8 +20,8 @@ exports.handler = async (_event, context) => {
 
   const { stripeID } = result.data.getUserByNetlifyID;
 
-
-  const priceId = 'price_1JtNOFACG3Zsu2XFU4il0Ki3'; 
+  const priceId = 'price_1K0vEsACG3Zsu2XF4jTr4uCP'; /**intro price */
+  /** const priceId = 'price_1JtNOFACG3Zsu2XFU4il0Ki3';  monthly price**/
   
   const link = await stripe.checkout.sessions.create({
    customer: stripeID,
