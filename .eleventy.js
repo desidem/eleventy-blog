@@ -9,6 +9,7 @@ module.exports = function (eleventyConfig) {
 
     eleventyConfig.addPassthroughCopy('src/_redirects');
     eleventyConfig.addPassthroughCopy('src/db')
+    eleventyConfig.addPassthroughCopy('src/video')
     eleventyConfig.addPassthroughCopy('src/confmail');
 
     eleventyConfig.addFilter('readableDate', (dateObj) => {
