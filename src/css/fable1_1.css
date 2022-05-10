@@ -142,9 +142,8 @@ body {
     grid-column: 1;
 /**  grid-row: 3 /5; 
 /** padding-bottom: 2em;  **/
-/**  background-color: orange; **/
+ background-color: lightblue; 
 }
-
 
 .animcontainer {
   grid-area: animcontainer;
@@ -153,7 +152,7 @@ body {
   grid-column: 2;
   grid-row: 3 / 5;
     
- /**  background-color: orange; **/
+  background-color: orange; 
 }
 }
 
