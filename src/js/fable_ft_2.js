@@ -6,7 +6,7 @@ var animData = {
 	renderer: 'svg',
 	loop: false,
 	autoplay: true,
-	path: '/js/data_do200 8png' 
+	path: '/js/data1000.json' 
     /** 
 	
 	path: 'data211.json' 
@@ -24,56 +24,36 @@ anim.addEventListener('DOMLoaded', firstLoop);
 /**THIS WORKS BUT LOOPS ON CLICK AT END--REMOVE FOR TEST ONLY **/
 
 function firstLoop() {
-    anim.playSegments([413,414], true);
+    anim.playSegments([309,600], true);
     animcontainer.addEventListener('click', secondLoop);
                          
 };
 
 function secondLoop() {
-    anim.playSegments([419,561], true);
+    anim.playSegments([601,744], true);
     animcontainer.addEventListener('click', thirdLoop);
                          
     
 };
 
-function thirdLoop() {
-    anim.playSegments([570,671], true);
-    animcontainer.addEventListener('click', fourthLoop);
-    
- /**   anim.addEventListener('complete', removeClick); **/
 
-};
 
-function fourthLoop() {
-    anim.playSegments([750,872], true);
-    animcontainer.addEventListener('click', fifthLoop);
-    
- /**   anim.addEventListener('complete', removeClick); **/
 
-};
-
-function fifthLoop() {
-    anim.playSegments([902,949], true);
-	anim.addEventListener('complete', removeClick);
-
-    
+    /**  anim.playSegments([664,831], true);**/
     /** next bit is added for alert box **/
     /**
     
     animcontainer.addEventListener('click', alert);
     alert("Hello! I am an alert box!!");
     **/
-}; 
+
 
 var popup = document.getElementById("myPopup");
 
 
-function removeClick (event){
+function removeClick (){
     animcontainer.removeEventListener('click', secondLoop);
-    animcontainer.removeEventListener('click', thirdLoop);
-    animcontainer.removeEventListener('click', fourthLoop);
-    animcontainer.removeEventListener('click', fifthLoop);
-	
+    
     anim.removeEventListener('complete', removeClick);
 
     popup.classList.toggle("show");
