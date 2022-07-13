@@ -31,7 +31,8 @@ function firstLoop() {
 
 function secondLoop() {
     anim.playSegments([601,744], true);
-    animcontainer.addEventListener('click', thirdLoop);
+   
+    anim.addEventListener('complete', removeClick);
                          
     
 };
