@@ -60,8 +60,9 @@ function fifthLoop() {
 
 };
 
+
 function sixthLoop() {
-    anim.playSegments([706,1035], true);
+    anim.playSegments([1341,1481], true);
     animcontainer.addEventListener('click', seventhLoop);
     
  /**   anim.addEventListener('complete', removeClick); **/
@@ -69,14 +70,6 @@ function sixthLoop() {
 };
 
 function seventhLoop() {
-    anim.playSegments([1341,1481], true);
-    animcontainer.addEventListener('click', eighthLoop);
-    
- /**   anim.addEventListener('complete', removeClick); **/
-
-};
-
-function eighthLoop() {
     anim.playSegments([1488,1688], true);
 	anim.addEventListener('complete', removeClick);
 
@@ -99,7 +92,6 @@ function removeClick (event){
     animcontainer.removeEventListener('click', fifthLoop);
     animcontainer.removeEventListener('click', sixthLoop);
     animcontainer.removeEventListener('click', seventhLoop);
-    animcontainer.removeEventListener('click', eighthLoop);
 	
     anim.removeEventListener('complete', removeClick);
 
