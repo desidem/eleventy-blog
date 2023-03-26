@@ -6,7 +6,7 @@ var animData = {
 	renderer: 'svg',
 	loop: false,
 	autoplay: true,
-	path: '/js/honey1 test data.json' 
+	path: '/js/honey1 test2 data.json' 
     /** 
 	path: '/js/data1000.json' 
 	path: 'data211.json' 
@@ -24,13 +24,13 @@ anim.addEventListener('DOMLoaded', firstLoop);
 /**THIS WORKS BUT LOOPS ON CLICK AT END--REMOVE FOR TEST ONLY **/
 
 function firstLoop() {
-    anim.playSegments([309,600], true);
+    anim.playSegments([11,12], true);
     animcontainer.addEventListener('click', secondLoop);
                          
 };
 
 function secondLoop() {
-    anim.playSegments([601,744], true);
+    anim.playSegments([1280,1485], true);
    
     anim.addEventListener('complete', removeClick);
                          
