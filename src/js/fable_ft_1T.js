@@ -6,7 +6,7 @@ var animData = {
 	renderer: 'svg',
 	loop: false,
 	autoplay: true,
-	path: '/js/bat data.json' 
+	path: '/js/bat data2.json' 
     /** 
 	
     path: '/js/data10.json' 
@@ -67,7 +67,7 @@ function sixthLoop() {
 };
 
 function seventhLoop() {
-    anim.playSegments([706,820], true);
+    anim.playSegments([687,820], true);
 	animcontainer.addEventListener('click', eighthLoop);
 	
 };
