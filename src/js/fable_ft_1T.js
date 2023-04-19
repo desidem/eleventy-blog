@@ -73,14 +73,14 @@ function seventhLoop() {
 };
 
 
-function seventhLoop() {
+function eighthLoop() {
     anim.playSegments([830,995], true);
-	animcontainer.addEventListener('click', eighthLoop);
+	animcontainer.addEventListener('click', ninthLoop);
 
 };
 
 
-function eighthLoop() {
+function ninthLoop() {
     anim.playSegments([1017,1218], true);
     anim.addEventListener('complete', removeClick);
 	
@@ -106,6 +106,7 @@ function removeClick (event){
 	animcontainer.removeEventListener('click', sixthLoop);
 	animcontainer.removeEventListener('click', seventhLoop);
     animcontainer.removeEventListener('click', eighthLoop);
+    animcontainer.removeEventListener('click', ninthLoop);
 
     
     anim.removeEventListener('complete', removeClick);
