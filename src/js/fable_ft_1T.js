@@ -31,14 +31,14 @@ function firstLoop() {
 };
 
 function secondLoop() {
-    anim.playSegments([1280,1485], true);
+    anim.playSegments([165,272], true);
     animcontainer.addEventListener('click', thirdLoop);
                          
     
 };
 
 function thirdLoop() {
-    anim.playSegments([1720,2059], true);
+    anim.playSegments([288,392], true);
     animcontainer.addEventListener('click', fourthLoop);
     
  /**   anim.addEventListener('complete', removeClick); **/
@@ -47,60 +47,36 @@ function thirdLoop() {
 
 
 function fourthLoop() {
-    anim.playSegments([2886,3000], true);
+    anim.playSegments([405,526], true);
 	animcontainer.addEventListener('click', fifthLoop);
 	
 };
 
 
 function fifthLoop() {
-    anim.playSegments([327,471], true);
+    anim.playSegments([547,672], true);
 	animcontainer.addEventListener('click', sixthLoop);
 	
 };
 
 function sixthLoop() {
-    anim.playSegments([482,625], true);
+    anim.playSegments([706,820], true);
 	animcontainer.addEventListener('click', seventhLoop);
 	
 };
 
 function seventhLoop() {
-    anim.playSegments([637,760], true);
+    anim.playSegments([830,995], true);
 	animcontainer.addEventListener('click', eighthLoop);
 	
 };
 
 
 function seventhLoop() {
-    anim.playSegments([637,760], true);
-	animcontainer.addEventListener('click', eighthLoop);
-	
-};
-
-function eighthLoop() {
-    anim.playSegments([1001,1169], true);
-	animcontainer.addEventListener('click', ninthLoop);
-	
-};
-
-function ninthLoop() {
-    anim.playSegments([1173,1337], true);
-	animcontainer.addEventListener('click', tenthLoop);
-	
-};
-
-function tenthLoop() {
-    anim.playSegments([1343,1514], true);
-	animcontainer.addEventListener('click', eleventhLoop);
-	
-};
-
-
-
-function eleventhLoop() {
-    anim.playSegments([1517,1580], true);
+    anim.playSegments([1017,1218], true);
 	anim.addEventListener('complete', removeClick);
+	
+
 
     /**  anim.playSegments([664,831], true);**/
     /** next bit is added for alert box **/
@@ -121,10 +97,7 @@ function removeClick (event){
 	animcontainer.removeEventListener('click', fifthLoop);
 	animcontainer.removeEventListener('click', sixthLoop);
 	animcontainer.removeEventListener('click', seventhLoop);
-	animcontainer.removeEventListener('click', eighthLoop);
-	animcontainer.removeEventListener('click', ninthLoop);
-	animcontainer.removeEventListener('click', tenthLoop);
-	animcontainer.removeEventListener('click', eleventhLoop);
+
     
     anim.removeEventListener('complete', removeClick);
 

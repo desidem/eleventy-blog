@@ -7,8 +7,9 @@ var animData = {
 	loop: false,
 	autoplay: true,
 	path: '/js/data batwing.json' 
+    
     /** 
-	
+	path: '/js/data batwing.json' 
 	path: 'data211.json' 
     path: 'data200.json' 
     path: 'data21b.json' 
