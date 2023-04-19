@@ -6,7 +6,7 @@ var animData = {
 	renderer: 'svg',
 	loop: false,
 	autoplay: true,
-	path: '/js/data batwing.json' 
+	path: '/js/bat data.json' 
     /** 
 	
     path: '/js/data10.json' 
