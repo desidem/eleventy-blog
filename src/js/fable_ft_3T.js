@@ -49,41 +49,9 @@ function thirdLoop() {
 
 function fourthLoop() {
     anim.playSegments([725,965], true);
-	animcontainer.addEventListener('click', fifthLoop);
-	
-};
-
-
-function fifthLoop() {
-    anim.playSegments([405,526], true);
-	animcontainer.addEventListener('click', sixthLoop);
-	
-};
-
-function sixthLoop() {
-    anim.playSegments([547,672], true);
-	animcontainer.addEventListener('click', seventhLoop);
-	
-};
-
-function seventhLoop() {
-    anim.playSegments([687,820], true);
-	animcontainer.addEventListener('click', eighthLoop);
-	
-};
-
-
-function eighthLoop() {
-    anim.playSegments([830,995], true);
-	animcontainer.addEventListener('click', ninthLoop);
-
-};
-
-
-function ninthLoop() {
-    anim.playSegments([1017,1218], true);
     anim.addEventListener('complete', removeClick);
 	
+
 
 
     /**  anim.playSegments([664,831], true);**/
@@ -102,11 +70,7 @@ function removeClick (event){
     animcontainer.removeEventListener('click', secondLoop);
     animcontainer.removeEventListener('click', thirdLoop);
     animcontainer.removeEventListener('click', fourthLoop);
-	animcontainer.removeEventListener('click', fifthLoop);
-	animcontainer.removeEventListener('click', sixthLoop);
-	animcontainer.removeEventListener('click', seventhLoop);
-    animcontainer.removeEventListener('click', eighthLoop);
-    animcontainer.removeEventListener('click', ninthLoop);
+
 
     
     anim.removeEventListener('complete', removeClick);
