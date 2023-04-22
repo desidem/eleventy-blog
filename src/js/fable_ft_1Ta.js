@@ -63,7 +63,7 @@ function fifthLoop() {
 
 
 function sixthLoop() {
-    anim.playSegments([538,820], true);
+    anim.playSegments([660,820], true);
 	animcontainer.addEventListener('click', seventhLoop);
 	
 };
