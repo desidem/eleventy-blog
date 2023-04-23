@@ -48,7 +48,7 @@ function thirdLoop() {
 
 
 function fourthLoop() {
-    anim.playSegments([725,965], true);
+    anim.playSegments([725,967], true);
     anim.addEventListener('complete', removeClick);
 	
 
