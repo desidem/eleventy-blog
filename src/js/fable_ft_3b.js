@@ -6,7 +6,7 @@ var animData = {
 	renderer: 'svg',
 	loop: false,
 	autoplay: true,
-	path: '/js/honey_data_210.json' 
+	path: '/js/honey_data_211.json' 
     /** 
 	
 	path: 'data211.json' 
@@ -24,20 +24,20 @@ anim.addEventListener('DOMLoaded', firstLoop);
 /**THIS WORKS BUT LOOPS ON CLICK AT END--REMOVE FOR TEST ONLY **/
 
 function firstLoop() {
-    anim.playSegments([5188,5189], true);
+    anim.playSegments([188,189], true);
     animcontainer.addEventListener('click', secondLoop);
                          
 };
 
 function secondLoop() {
-    anim.playSegments([5959,6116], true);
+    anim.playSegments([959,116], true);
     animcontainer.addEventListener('click', thirdLoop);
                          
     
 };
 
 function thirdLoop() {
-    anim.playSegments([6293,6450], true);
+    anim.playSegments([293,450], true);
     animcontainer.addEventListener('click', fourthLoop);
     
  /**   anim.addEventListener('complete', removeClick); **/
@@ -45,7 +45,7 @@ function thirdLoop() {
 };
 
 function fourthLoop() {
-    anim.playSegments([6575,6916], true);
+    anim.playSegments([575,916], true);
     animcontainer.addEventListener('click', fifthLoop);
     
  /**   anim.addEventListener('complete', removeClick); **/
@@ -54,7 +54,7 @@ function fourthLoop() {
 
 
 function fifthLoop() {
-    anim.playSegments([7073,7600], true);
+    anim.playSegments([1073,1600], true);
 	anim.addEventListener('complete', removeClick);
 	
 
