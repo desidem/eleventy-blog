@@ -6,7 +6,7 @@ var animData = {
 	renderer: 'svg',
 	loop: false,
 	autoplay: true,
-	path: '/js/honey1 test2 data.json' 
+	path: '/js/honey_data_110.json' 
     /** 
 	
 	path: 'data211.json' 
