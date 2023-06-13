@@ -6,7 +6,7 @@ var animData = {
 	renderer: 'svg',
 	loop: false,
 	autoplay: true,
-	path: '/js/honey_data_221.json' 
+	path: '/js/honey_data_225.json' 
     /** 
 	
 	path: 'data211.json' 
@@ -54,7 +54,7 @@ function fourthLoop() {
 
 
 function fifthLoop() {
-    anim.playSegments([2430,2903], true);
+    anim.playSegments([2430,2777], true);
 	anim.addEventListener('complete', removeClick);
 	
 
